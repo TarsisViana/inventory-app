@@ -1,7 +1,13 @@
 import pool from "./pool.js";
 
-async function getAllUsernames() {
-  const { rows } = await pool.query("SELECT * FROM usernames");
+async function getItems(search) {
+  let text =
+    "SELECT name, price, description, img, category, rating_rate, rating_count FROM inventory JOIN categories ON inventory.category = categoryId";
+  if (search) {
+    text += " WHERE category = $1";
+    var values = search;
+  }
+  const { rows } = await pool.query(text, values);
   return rows;
 }
 

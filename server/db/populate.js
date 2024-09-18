@@ -2,7 +2,7 @@
 import "dotenv/config";
 import pg from "pg";
 const { Client } = pg;
-import itemString from "../inventory.js";
+import itemString from "./inventory.js";
 
 const SQL = `
 CREATE TABLE IF NOT EXISTS categories (
@@ -18,10 +18,10 @@ VALUES ('men''s clothing'),
 
 CREATE TABLE IF NOT EXISTS inventory (
   itemID INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-  name VARCHAR ( 500 ),
+  title VARCHAR ( 500 ),
   price FLOAT,
   description TEXT,
-  img VARCHAR(500),
+  image VARCHAR(500),
   category INTEGER,
   rating_rate FLOAT,
   rating_count INTEGER,
