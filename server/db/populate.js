@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS inventory (
   FOREIGN KEY (category) REFERENCES categories (categoryId)
 );
 
-INSERT INTO inventory (name, price, description, img, category, rating_rate, rating_count)
+INSERT INTO inventory (title, price, description, image, category, rating_rate, rating_count)
 VALUES 
   ${itemString}
 ;

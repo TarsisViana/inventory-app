@@ -4,9 +4,9 @@ const server = express();
 
 import inventoryRouter from "./routers/inventoryRouter.js";
 
-app.use(express.urlencoded({ extended: true }));
+server.use(express.urlencoded({ extended: true }));
 
-app.use("/inventory", inventoryRouter);
+server.use("/inventory", inventoryRouter);
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
