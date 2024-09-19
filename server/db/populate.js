@@ -7,10 +7,10 @@ import itemString from "./inventory.js";
 const SQL = `
 CREATE TABLE IF NOT EXISTS categories (
   categoryId  INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-  category VARCHAR (500)
+  name VARCHAR (500)
 );
 
-INSERT INTO categories (category)
+INSERT INTO categories (name)
 VALUES ('men''s clothing'),
        ('jewelery'),
        ('electronics'),

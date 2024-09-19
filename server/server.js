@@ -3,8 +3,10 @@ import "dotenv/config";
 const server = express();
 
 import inventoryRouter from "./routers/inventoryRouter.js";
+import cors from "cors";
 
 server.use(express.urlencoded({ extended: true }));
+server.use(cors());
 
 server.use("/inventory", inventoryRouter);
 
