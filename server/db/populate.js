@@ -32,6 +32,16 @@ INSERT INTO inventory (title, price, description, image, category, rating_rate, 
 VALUES 
   ${itemString}
 ;
+
+CREATE TABLE IF NOT EXISTS cart (
+  cartitemid INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  itemid SMALLINT CHECK (itemid >=0),
+  amount SMALLINT CHECK (amount >0),
+  FOREIGN KEY (itemid) REFERENCES inventory (itemid)
+);
+
+INSERT INTO cart (itemid, amount) 
+VALUES ('2','1');
 `;
 
 async function main() {

@@ -6,8 +6,6 @@ import styled from "styled-components";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export async function action({ request }) {
-  
-
   const formData = await request.formData();
   const order = Object.fromEntries(formData);
   order.amount = parseInt(order.amount)

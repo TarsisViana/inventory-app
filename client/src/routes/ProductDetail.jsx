@@ -126,19 +126,19 @@ export default function ProductDetail() {
           <DescriptionP>{product.description}</DescriptionP>
           
           <RatingWrapper>
-            <RateSpan>{product.rating.rate}</RateSpan>
+            <RateSpan>{product.rating_rate}</RateSpan>
             <Rating
-              initialValue={product.rating.rate}
+              initialValue={product.rating_rate}
               readonly={true}
               allowFraction={true}
               size={16}
               />
-            <ReviewsSpan>({product.rating.count} reviews)</ReviewsSpan>
+            <ReviewsSpan>({product.rating_count} reviews)</ReviewsSpan>
           </RatingWrapper>
           <PriceWrapper>
             <PriceSpan className="">{product.price} €</PriceSpan>
             
-            <StyledButtons id={id} />
+            <StyledButtons id={parseInt(id)} />
           </PriceWrapper>
         </div>
         

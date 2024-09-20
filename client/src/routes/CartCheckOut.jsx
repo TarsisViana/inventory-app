@@ -5,15 +5,10 @@ import styled from "styled-components";
 
 
 // eslint-disable-next-line react-refresh/only-export-components
-export async function loader(){
-  const orderArray = getCartData();
-  const orderDetails = await Promise.all(orderArray.map( async order => {
-        const response = await fetch(
-          `https://fakestoreapi.com/products/${order.id}`
-        )
-        const obj = await response.json()
-        return {...obj , amount : order.amount}
-      }))
+export async function loader() {
+  const response = await fetch(`http://${import.meta.env.VITE_HOST}/inventory/cartdetails`)
+  const orderDetails = await response.json();
+  console.log(orderDetails)
   return orderDetails; 
 }
 

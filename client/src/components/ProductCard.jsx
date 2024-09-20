@@ -109,7 +109,8 @@ ProductCard.propTypes = {
     description: PropTypes.string,
     category: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
-    rating: PropTypes.object
+    rating_rate: PropTypes.number,
+    rating_count: PropTypes.number, 
   }).isRequired
 }
 

@@ -9,7 +9,7 @@ export async function action({ request }) {
   const formData = await request.formData();
   let intent = formData.get("intent");
   const order = Object.fromEntries(formData);
-
+  order.amount = parseInt(order.amount)
   if (intent === "delete") {
     deleteOrder(order.id);
     return null;

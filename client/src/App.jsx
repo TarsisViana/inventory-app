@@ -10,8 +10,12 @@ import Message from './components/Message'
 
 // eslint-disable-next-line react-refresh/only-export-components
 export async function loader() {
-  const productData = await getProducts()
-  const cart = getCartData()
+  const result = await fetch(`http://${import.meta.env.VITE_HOST}/inventory`);
+  const productData = await result.json();
+  
+  const cartResult = await fetch(`http://${import.meta.env.VITE_HOST}/inventory/cart`);
+  const cart = await cartResult.json();
+  console.log(cart)
   return {productData, cart}
 }
 
