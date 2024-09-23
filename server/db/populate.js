@@ -34,10 +34,11 @@ VALUES
 ;
 
 CREATE TABLE IF NOT EXISTS cart (
-  cartitemid INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
+  cartid INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
   itemid SMALLINT CHECK (itemid >=0),
   amount SMALLINT CHECK (amount >0),
-  FOREIGN KEY (itemid) REFERENCES inventory (itemid)
+  FOREIGN KEY (itemid) REFERENCES inventory (itemid),
+  UNIQUE (itemid)
 );
 
 INSERT INTO cart (itemid, amount) 

@@ -2,9 +2,9 @@ import { Outlet, useLoaderData } from 'react-router-dom'
 
 import './App.css'
 import Header from './components/Header'
-import getProducts from './products'
 
-import { getCartData } from './cart'
+
+
 import { useState } from 'react'
 import Message from './components/Message'
 
@@ -15,7 +15,6 @@ export async function loader() {
   
   const cartResult = await fetch(`http://${import.meta.env.VITE_HOST}/inventory/cart`);
   const cart = await cartResult.json();
-  console.log(cart)
   return {productData, cart}
 }
 

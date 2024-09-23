@@ -1,7 +1,6 @@
 import { useRef, useState } from "react"
-import { Form, useSubmit } from "react-router-dom"
+import { Form, redirect, useSubmit } from "react-router-dom"
 import PropTypes from 'prop-types'
-import { changeAmount, deleteOrder } from "../cart";
 import styled from "styled-components";
 
 // eslint-disable-next-line react-refresh/only-export-components
@@ -9,12 +8,20 @@ export async function action({ request }) {
   const formData = await request.formData();
   let intent = formData.get("intent");
   const order = Object.fromEntries(formData);
-  order.amount = parseInt(order.amount)
+  order.amount = parseInt(order.amount);
+
   if (intent === "delete") {
-    deleteOrder(order.id);
-    return null;
+    await fetch(`http://${import.meta.env.VITE_HOST}/inventory/cart/${order.id}`, {
+      method: "delete",
+    })
+    return redirect("/checkout");
   }
-  changeAmount(order)
+  console.log("hey")
+  await fetch(`http://${import.meta.env.VITE_HOST}/inventory/cart`, {
+    method: "put",
+    body: JSON.stringify(order),
+    headers: {"Content-Type": "application/json"}
+    })
   return null;
 }
 

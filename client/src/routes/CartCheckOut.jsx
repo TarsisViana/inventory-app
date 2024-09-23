@@ -1,5 +1,4 @@
 import { useLoaderData } from "react-router-dom";
-import { getCartData } from "../cart"
 import ProductBanner from "../components/ProductBanner";
 import styled from "styled-components";
 

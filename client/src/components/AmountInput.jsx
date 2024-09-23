@@ -1,16 +1,22 @@
 import { useState } from "react"
 import { Form, redirect, useOutletContext } from "react-router-dom"
 import PropTypes from 'prop-types'
-import {cartData, addToCart} from "../cart";
 import styled from "styled-components";
 
 // eslint-disable-next-line react-refresh/only-export-components
 export async function action({ request }) {
   const formData = await request.formData();
   const order = Object.fromEntries(formData);
-  order.amount = parseInt(order.amount)
-  addToCart(order)
-  console.log(cartData)
+
+  await fetch(`http://${import.meta.env.VITE_HOST}/inventory/cart/add`,
+    {
+      method: 'post',
+      body: JSON.stringify(order),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }
+  )
   return redirect("/products");
 }
 
