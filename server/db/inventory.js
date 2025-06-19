@@ -210,7 +210,7 @@ const itemArr = [
 let itemString = "";
 
 itemArr.forEach((item, index) => {
-  let query = `(SELECT categoryId FROM categories WHERE category LIKE '${item.category.slice(
+  let query = `(SELECT categoryId FROM categories WHERE name LIKE '${item.category.slice(
     0,
     3
   )}%')`;

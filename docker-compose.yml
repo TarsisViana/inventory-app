@@ -1,0 +1,38 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: inventorydb
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "15432:5432"
+
+  server:
+    build:
+      context: ./server
+    depends_on:
+      - db
+    environment:
+      USER: postgres
+      USER_PASSWORD: postgres
+      DATABASE: inventorydb
+      HOST: db
+      DEFAULT_PORT: 5432
+    ports:
+      - "3000:3000"
+
+  client:
+    build:
+      context: ./client
+    ports:
+      - "5173:80"
+    environment:
+      VITE_HOST: http://localhost:3000
+    stdin_open: true
+    tty: true
+
+volumes:
+  pgdata:
