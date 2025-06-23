@@ -7,7 +7,7 @@ import itemString from "./inventory.js";
 const SQL = `
 CREATE TABLE IF NOT EXISTS categories (
   categoryId  INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-  name VARCHAR (500)
+  name VARCHAR (500) UNIQUE
 );
 
 INSERT INTO categories (name)
