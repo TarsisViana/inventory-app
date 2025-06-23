@@ -1,0 +1,6 @@
+HOST="localhost"
+USER="usr"
+USER_PASSWORD="pw"
+DATABASE="db_name"
+DEFAULT_PORT="5432"
+port="3000"
